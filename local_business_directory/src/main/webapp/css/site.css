@@ -1,0 +1,18 @@
+body {
+  background-image: url("background-brick.jpg");
+  background-repeat: no-repeat;
+  background-position: top;
+  background-attachment: fixed;
+  background-size: auto 100%;
+}
+
+nav {
+	background-color: #2b3332;
+	text-color: white;
+	font-weight: bold;
+}
+
+.floating-content {
+	background-color: white;
+	font-color: #2b3332;
+}
