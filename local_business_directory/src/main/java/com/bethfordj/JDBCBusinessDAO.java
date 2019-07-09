@@ -17,9 +17,7 @@ import com.bethfordj.dao.model.BusinessFilter;
 import com.bethfordj.dao.model.BusinessSortOrder;
 import com.bethfordj.dao.model.BusinessType;
 import com.bethfordj.dao.model.ContactInfo;
-import com.techelevator.dao.model.Product;
-import com.techelevator.dao.model.ProductFilter;
-import com.techelevator.dao.model.ProductSortOrder;
+
 
 @Component
 public class JDBCBusinessDAO implements BusinessDAO {
@@ -36,7 +34,7 @@ public class JDBCBusinessDAO implements BusinessDAO {
     private final JdbcTemplate jdbcTemplate;
 
     @Autowired
-    public JdbcProductDao(DataSource dataSource) {
+    public JDBCBusinessDAO(DataSource dataSource) {
         jdbcTemplate = new JdbcTemplate(dataSource);
     }
 	

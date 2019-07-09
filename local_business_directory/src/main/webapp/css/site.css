@@ -1,18 +1,96 @@
 body {
-  background-image: url("background-brick.jpg");
+  background-color: black;
+  background-image: url(../images/background-brick.jpg);
   background-repeat: no-repeat;
-  background-position: top;
   background-attachment: fixed;
-  background-size: auto 100%;
+  background-size: 100%;
+  font-family: "Poiret One", san serif;
 }
 
 nav {
+	display: block;
+	margin: 5px;
 	background-color: #2b3332;
-	text-color: white;
-	font-weight: bold;
+	color: white;
+	border-radius: 5px;
+	box-shadow: 3px 3px rgb(16, 18, 18, 0.7);
+	font-size: 1.2rem;
+}
+
+li {
+	list-style: none;
+	display: inline-block;
+	padding: 15px;
+}
+
+a:link {
+  	color: #c3d9d3;
+  	text-decoration: none;
+}
+
+a:visited {
+  color: #d9c1b2;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
 }
 
 .floating-content {
 	background-color: white;
 	font-color: #2b3332;
+	margin: 0 auto;
+	width: 95%;
+	height: 95%;
+	vertical-align: center;
+	padding: 15px;
+	border-radius: 5px;
+	box-shadow: 3px 3px rgb(43, 51, 50, 0.7);
+}
+
+.main-grid {
+	display: grid;
+	grid-template-columns: 2fr 1fr;
+	grid-template-areas:
+		"directory blurb"
+}
+
+#site-blurb {
+	grid-area: blurb;
+	font-family: "Poiret One", san serif;
+	font-style: italic;
+	padding: 10px;
+}
+
+.directory {
+	grid-area: directory;
+	padding-left: 5px;
+}
+
+#page-title {
+	font-family: "Give You Glory", serif;
+	color: #f0f0f0;
+	padding: 20px 25px 10px 25px;
+	background-color: #003434;
+	border-radius: 5px;
+	width: max-content;
+	text-shadow: 2px 2px rgb(16, 18, 18, 0.7);
+	font-size: 3em;
+}
+
+h2 {
+	padding-left: 15px;
+	font-weight: bold;
+}
+
+footer {
+	display: block;
+	margin: 5px;
+	background-color: #2b3332;
+	color: #dbdbdb;
+	border-radius: 5px;
+	box-shadow: 3px 3px rgb(16, 18, 18, 0.7);
+	font-size: 1.2rem;
+	padding: 1px 0px 1px 10px;
 }
