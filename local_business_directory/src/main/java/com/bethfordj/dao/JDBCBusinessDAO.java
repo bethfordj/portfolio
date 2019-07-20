@@ -99,7 +99,7 @@ public class JDBCBusinessDAO implements BusinessDAO {
         return searchResults;
     }
     
-    public void saveNewBusiness(Business newBusiness) {
+    public Business saveNewBusiness(Business newBusiness) {
     	String sqlBus = "Insert Into business (business_id, name, slogan, image, rating) Values (default, ?, ?, ?, ?);";
         jdbcTemplate.update(sqlBus, newBusiness.getBusinessName(), newBusiness.getSlogan(), newBusiness.getImageName(), newBusiness.getRating());
         
@@ -107,15 +107,15 @@ public class JDBCBusinessDAO implements BusinessDAO {
         
         saveNewAddress(newBusiness);
         saveNewContact(newBusiness);
-       
-        		
+        saveType(newBusiness);
+        saveBusType(newBusiness);
         
+        return newBusiness;
     }
     
  
-    
 
-    
+// methods called in saveNewBusiness: saving each part first and get IDs second (since they are called in the save methods).    
     private void saveNewAddress(Business newBusiness) {
     	Address newAddress = newBusiness.getAddress();
     	String sqlAdd = "Insert Into address (address_id, business_id, street1,  street2, street3, state, zip_code) " +
@@ -134,11 +134,16 @@ public class JDBCBusinessDAO implements BusinessDAO {
     	getContactId(newBusiness, newContact);
     }
     
-    private void saveNBType(Business newBusiness) {
+    private void saveType(Business newBusiness) {
     	BusinessType newType = newBusiness.getType();
     	String sqlTyp = "Insert Into type (type_id, specific_type, general_type) Values (default, ?, ?);";
     	jdbcTemplate.update(sqlTyp, newType.getSpecificType(), newType.getGeneralType());
     	getTypeId(newBusiness, newType);
+    }
+    
+    private void saveBusType(Business newBusiness) {
+    	String sqlBTy = "Instert Into business_type (business_id, type_id) Values (?, ?);";
+    	jdbcTemplate.update(sqlBTy, newBusiness.getBusinessId(), newBusiness.getType().getTypeId());
     }
 	
     private void getBusinessId(Business newBusiness) {
@@ -171,9 +176,17 @@ public class JDBCBusinessDAO implements BusinessDAO {
     }
     
     private void getTypeId(Business newBusiness, BusinessType newType) {
+    	String sql = "Select type_id From type Where specific_type = ? And general_type = ?";
+    	SqlRowSet result = jdbcTemplate.queryForRowSet(sql, newType.getSpecificType(), newType.getGeneralType());
     	
+    	if (result.next()) {
+    		newType.setTypeId(result.getLong("type_id"));
+    	}
+    	newBusiness.setType(newType);
     }
     
+    
+// mapping methods for the different classes
 	private List<Business> mapRowSetToBusinessList(SqlRowSet result) {
 		List<Business> list = new ArrayList<Business>();
 		
