@@ -1,4 +1,4 @@
-package com.bethfordj;
+package com.bethfordj.dao;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +10,6 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
-import com.bethfordj.dao.BusinessDAO;
 import com.bethfordj.dao.model.Address;
 import com.bethfordj.dao.model.Business;
 import com.bethfordj.dao.model.BusinessFilter;
@@ -23,7 +22,7 @@ import com.bethfordj.dao.model.ContactInfo;
 public class JDBCBusinessDAO implements BusinessDAO {
 	
 	private static final String SELECT_BUSINESSES_SQL = "SELECT bus.business_id, name, slogan, image, rating, type_id, specific_type, general_type, " + 
-						"address_ic, street1, street2, street3, state, zip_code, " + 
+						"address_id, street1, street2, street3, state, zip_code, " + 
 						"contact_id, phone1, label1, phone2, label2, email, url " +
 						"From business As bus " + 
 						"Join contact On bus.business_id = contact.business_id " +
@@ -99,7 +98,82 @@ public class JDBCBusinessDAO implements BusinessDAO {
         }
         return searchResults;
     }
+    
+    public void saveNewBusiness(Business newBusiness) {
+    	String sqlBus = "Insert Into business (business_id, name, slogan, image, rating) Values (default, ?, ?, ?, ?);";
+        jdbcTemplate.update(sqlBus, newBusiness.getBusinessName(), newBusiness.getSlogan(), newBusiness.getImageName(), newBusiness.getRating());
+        
+        getBusinessId(newBusiness);
+        
+        saveNewAddress(newBusiness);
+        saveNewContact(newBusiness);
+       
+        		
+        
+    }
+    
+ 
+    
+
+    
+    private void saveNewAddress(Business newBusiness) {
+    	Address newAddress = newBusiness.getAddress();
+    	String sqlAdd = "Insert Into address (address_id, business_id, street1,  street2, street3, state, zip_code) " +
+    			"Values (default, ?, ?, ?, ?, ?, ?);";
+    	jdbcTemplate.update(sqlAdd, newBusiness.getBusinessId(), newAddress.getStreet1(), newAddress.getStreet2(), 
+    			newAddress.getStreet3(), newAddress.getState(), newAddress.getZipCode()); 
+    	getAddressId(newBusiness, newAddress);
+    }
+    
+    private void saveNewContact(Business newBusiness) {
+    	ContactInfo newContact = newBusiness.getContact();
+    	String sqlCon = "Insert Into contact (contact_id, business_id, phone1, label1, phone2, label2, email, url) " +
+    			"Values (default, ?, ?, ?, ?, ?, ?, ?);";
+    	jdbcTemplate.update(sqlCon, newBusiness.getBusinessId(), newContact.getPhone1(), newContact.getLabel1(), 
+    			newContact.getPhone2(), newContact.getLabel2(), newContact.getEmail(), newContact.getWebsite());
+    	getContactId(newBusiness, newContact);
+    }
+    
+    private void saveNBType(Business newBusiness) {
+    	BusinessType newType = newBusiness.getType();
+    	String sqlTyp = "Insert Into type (type_id, specific_type, general_type) Values (default, ?, ?);";
+    	jdbcTemplate.update(sqlTyp, newType.getSpecificType(), newType.getGeneralType());
+    	getTypeId(newBusiness, newType);
+    }
 	
+    private void getBusinessId(Business newBusiness) {
+    	String sql = "Select business_id From business Where name = ? And slogan = ?;";
+    	SqlRowSet result = jdbcTemplate.queryForRowSet(sql, newBusiness.getBusinessName(), newBusiness.getSlogan());
+    	
+    	if (result.next()) {
+    		newBusiness.setBusinessId(result.getLong("business_id"));
+    	}
+    }
+    
+    private void getAddressId(Business newBusiness, Address newAddress) {
+    	String sql = "Select address_id From address Where street1 = ? And state = ?;";
+    	SqlRowSet result = jdbcTemplate.queryForRowSet(sql, newAddress.getStreet1(), newAddress.getState());
+    	
+    	if (result.next()) {
+    		newAddress.setAddressId(result.getLong("address_id"));
+    	}
+    	newBusiness.setAddress(newAddress);
+    }
+    
+    private void getContactId(Business newBusiness, ContactInfo newContact) {
+    	String sql = "Select contact_id From contact Where phone1 = ? And url = ?;";
+    	SqlRowSet result = jdbcTemplate.queryForRowSet(sql, newContact.getPhone1(), newContact.getWebsite());
+    	
+    	if (result.next()) {
+    		newContact.setContactId(result.getLong("contact_id"));
+    	}
+    	newBusiness.setContact(newContact);
+    }
+    
+    private void getTypeId(Business newBusiness, BusinessType newType) {
+    	
+    }
+    
 	private List<Business> mapRowSetToBusinessList(SqlRowSet result) {
 		List<Business> list = new ArrayList<Business>();
 		

@@ -1,5 +1,13 @@
+Drop Table If Exists business_type;
+Drop Table If Exists type;
+Drop Table If Exists contact;
+Drop Table If Exists address;
+Drop Table If Exists business;
+
+
+
 Create Table business (
-       busines_id serial primary key,
+       business_id serial primary key,
        name varchar(128) not null,
        slogan varchar(256),
        image varchar(128),
@@ -7,8 +15,8 @@ Create Table business (
 );
 
 Create Table business_type (
-        business_id long,
-        type_id long,
+        business_id BigInt,
+        type_id BigInt,
         
         Primary Key (business_id, type_id)
 );
@@ -21,21 +29,21 @@ Create Table type (
 
 Create Table contact (
         contact_id serial primary key,
-        business_id long not null,
+        business_id BigInt not null,
         phone1 varchar(13) not null,
         label1 varchar(30),
         phone2 varchar(10),
         label2  varchar(30),
         email varchar(64),
         url varchar(256),
-        
+              
         constraint fk_business_business_id foreign key (business_id) references business(business_id),
-        constraint chk_label2_if_phone2_not_null check ((phone2 is not null AND label1 is not null AND label2 is not null) OR (phone2 is null AND label1 is null AND label2 is null))       
+        constraint chk_label2_if_phone2_not_null check ((phone2 is not null AND label1 is not null AND label2 is not null) OR (phone2 is null AND label2 is null))       
 );
 
 Create Table address (
         address_id serial primary key,
-        business_id long not null,
+        business_id BigInt not null,
         street1 varchar(256) not null,
         street2 varchar(256),
         street3 varchar(256),
@@ -43,5 +51,5 @@ Create Table address (
         state varchar(64) not null,
         zip_code int not null,
 
-        constraint fk_business_business_id foreign key (business_id) references business(business_id),
+        constraint fk_business_business_id foreign key (business_id) references business(business_id)
 );
