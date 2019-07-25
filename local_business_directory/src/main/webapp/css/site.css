@@ -23,6 +23,10 @@ li {
 	padding: 15px;
 }
 
+#diamond {
+	font-size: 60%;
+}
+
 a:link {
   	color: #c3d9d3;
   	text-decoration: none;
@@ -60,7 +64,8 @@ a:hover {
 	grid-area: blurb;
 	font-family: "Poiret One", san serif;
 	font-style: italic;
-	padding: 10px;
+	padding: 2%;
+	margin-top: 10%;
 }
 
 .directory {
@@ -90,26 +95,41 @@ h3 {
 	font-size: 1.5em;
 }
 	
-h4 {
+#subtitle {
+	display: inline block;
 	font-family: "Poiret One", san-serif;
 	font-weight: bold;
-	font-size: 1.2em;
+	font-size: 1.1em;
+	margin-left: 0px;
 }
 
 .tile p {
+	display: inline block;
 	font-family: "Poiret One", san-serif;
 	font-weight: medium;
+	margin-left: 10px;
 }
 
 .tile {
 	background-color: white;
 	border-radius: 5px;
 	box-shadow: 1px 1px lightgray;
-	margin: 5px 10px 5px 0px;
+	margin: 10px;
 	padding: 5px 15px 5px 15px;
-	border-color: #e9f5f1;
-	border-width: 1px;
-	border-style: solid;
+	height: 100%;
+}
+
+#tile-background {
+	background-color: #2b3332;
+	border-radius: 2px;
+	padding: 2px;
+	margin: 10px 10px 0px 0px;
+}
+
+#tile-background form {
+	background-color: #c3d9d3;
+	margin: 10px 8px 10px 8px;
+	padding: 5px;
 }
 
 footer {

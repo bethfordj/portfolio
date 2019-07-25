@@ -20,8 +20,11 @@
 	<nav>
 		<ul>
 			<c:url var="allBusinessesUrl" value="/" />
-			<li><a href="${allBusinessesUrl}">Map</a></li>
-			<li><a href="${allBusinessesUrl}/tiles">Grid</a></li>
+			<li><a href="${allBusinessesUrl}">Directory Home</a></li>
+			<li id="diamond">&#9830;</li>
+			<c:url var="liveCbus" value="https://www.livecolumbusoh.com/" />
+			<li><a href="${liveCbus}">Back to Live Columbus</a></li>
+			
 		</ul>
 	</nav>
 	
@@ -38,7 +41,7 @@
 		<div class="main-grid">
 		
 			<div id="site-blurb">
-				<h4>About the Directory</h4>
+				<h3>About the Directory</h3>
 				<p>Welcome to my Local Business Directory for Columbus, Ohio, and its greater metropolitan area!</p>
 				<p>To be included in this listing, the businesses must be independently owned and operated - not part of a chain or franchise. Larger businesses or corporations will only be included if the listing is for their main headquarters (which is in Columbus, Ohio).</p>
 				<p>As you may expect, this is an ongoing project and will take some time to complete. I will continue to update as I gather more business information, but there is no deadline in sight at the moment.</p>

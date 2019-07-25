@@ -107,8 +107,8 @@ public class JDBCBusinessDAO implements BusinessDAO {
 
         List<Business> searchResults = new ArrayList<Business>();
         
-        if (result.next()) {
-            return mapRowSetToBusinessList(result);
+        if (!result.equals(null)) {
+        	return mapRowSetToBusinessList(result);
         }
         return searchResults;
     }
@@ -131,11 +131,9 @@ public class JDBCBusinessDAO implements BusinessDAO {
     public boolean isExistingBusiness(Business newBusiness) {
     	getBusinessId(newBusiness);
     	
-    	if (newBusiness.getBusinessId() != 0){
-    		
+    	if (newBusiness.getBusinessId() != 0){	
     		return true;
     	}
-    	
     	else {
     		return false;
     	}
@@ -222,6 +220,7 @@ public class JDBCBusinessDAO implements BusinessDAO {
 		while(result.next()) {
 			list.add(mapRowSetToBusiness(result));
 		}
+		
 		return list;
 	}
 	

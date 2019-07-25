@@ -5,7 +5,8 @@
 
 
 
-<div>
+<div id="tile-background">	
+
 	<c:url var="page1Url" value="/" />
 	<form:form action="${page1Url}" method="POST" modelAttribute="page1">
 		<input type="text" placeholder="Search for a Business.."><button type="submit"><i class="fa fa-search"></i></button>
@@ -16,23 +17,12 @@
 
 
 	</form:form>
-	
-	<c:forEach var="business" items="${businessList}" >
-		<div class="tile">
-		<c:set var="address" value="${business.address}" />
-			<h3>${business.businessName}</h3>
-			<c:if test="${business.slogan} != null">
-				<p id="slogan">${business.slogan}</p>
-			</c:if>
-			<div>
-				<h4>Address:</h4>
-				<p>${address.street1}</p>
-				<p>${address.city}, OH, ${address.zipCode}</p>
-			</div>
-		</div>
 
-	</c:forEach>
 	
+		<c:import url="/WEB-INF/jsp/businessTile.jsp" />
+		
+
+
 </div>
 
 

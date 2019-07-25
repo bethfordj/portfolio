@@ -48,7 +48,7 @@ public class JDBCBusinessDAOIntegrationTest extends DAOIntegrationTest {
 		
 		Business firstBusiness = busList.get(0);
 		
-		Assert.assertEquals("testBus", firstBusiness.getBusinessName());	
+		Assert.assertEquals("testBusiness", firstBusiness.getBusinessName());	
 	}
 	
 	@Test
@@ -64,7 +64,7 @@ public class JDBCBusinessDAOIntegrationTest extends DAOIntegrationTest {
 		
 		Business firstBusiness = busList.get(0);
 		
-		Assert.assertEquals("testBus", firstBusiness.getBusinessName());	
+		Assert.assertEquals("testBusiness", firstBusiness.getBusinessName());	
 	}
 	
 	@Test
@@ -80,7 +80,7 @@ public class JDBCBusinessDAOIntegrationTest extends DAOIntegrationTest {
 		
 		Business firstBusiness = busList.get(0);
 		
-		Assert.assertEquals("testBusiness", firstBusiness.getBusinessName());	
+		Assert.assertEquals("testBus", firstBusiness.getBusinessName());	
 	}
 	
 	@Test
@@ -113,7 +113,7 @@ public class JDBCBusinessDAOIntegrationTest extends DAOIntegrationTest {
 		int listLength = busList.size();
 		Business firstBusiness = busList.get(0);
 		
-		Assert.assertEquals("testBus", firstBusiness.getBusinessName());	
+		Assert.assertEquals("testBusiness", firstBusiness.getBusinessName());	
 		Assert.assertEquals(2, listLength);	
 		
 	}
