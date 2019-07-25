@@ -21,8 +21,8 @@ import com.bethfordj.dao.model.ContactInfo;
 @Component
 public class JDBCBusinessDAO implements BusinessDAO {
 	
-	private static final String SELECT_BUSINESSES_SQL = "SELECT bus.business_id, name, slogan, image, rating, type_id, specific_type, general_type, " + 
-						"address_id, street1, street2, street3, state, zip_code, " + 
+	private static final String SELECT_BUSINESSES_SQL = "SELECT bus.business_id, name, slogan, image, rating, type.type_id, specific_type, general_type, " + 
+						"address_id, street1, street2, street3, city, state, zip_code, " + 
 						"contact_id, phone1, label1, phone2, label2, email, url " +
 						"From business As bus " + 
 						"Join contact On bus.business_id = contact.business_id " +
@@ -82,14 +82,31 @@ public class JDBCBusinessDAO implements BusinessDAO {
         if (sortOrder == BusinessSortOrder.GENERAL_TYPE) {
             sql += " general_type ASC, specific_type ASC;";
         } else if (sortOrder == BusinessSortOrder.RATING_HIGH_TO_LOW) {
-            sql += " rating DESC ";
+            sql += " rating DESC;";
         } else if (sortOrder == BusinessSortOrder.RATING_LOW_TO_HIGH) {
-            sql += " rating ASC ";
+            sql += " rating ASC;";
         } else {
-            sql += " bus.name ASC ";
+            sql += " bus.name ASC;";
         }
-
-        SqlRowSet result = jdbcTemplate.queryForRowSet(sql, queryParameters.toArray());
+        
+        String allQueryParameters = "";
+        SqlRowSet result = null;
+        
+        if(!queryParameters.isEmpty()) {
+        	
+        	allQueryParameters += queryParameters.remove(0);
+        
+	        for(Object parameter : queryParameters) {
+	        	allQueryParameters += "," + parameter;
+	        }
+        	result = jdbcTemplate.queryForRowSet(sql, allQueryParameters);
+    	}
+    	else {
+    		result = jdbcTemplate.queryForRowSet(sql);
+    	}
+        
+        System.out.println(sql);
+        System.out.println(allQueryParameters);
 
         List<Business> searchResults = new ArrayList<Business>();
         
@@ -100,6 +117,7 @@ public class JDBCBusinessDAO implements BusinessDAO {
     }
     
     public Business saveNewBusiness(Business newBusiness) {
+
     	String sqlBus = "Insert Into business (business_id, name, slogan, image, rating) Values (default, ?, ?, ?, ?);";
         jdbcTemplate.update(sqlBus, newBusiness.getBusinessName(), newBusiness.getSlogan(), newBusiness.getImageName(), newBusiness.getRating());
         
@@ -113,15 +131,29 @@ public class JDBCBusinessDAO implements BusinessDAO {
         return newBusiness;
     }
     
+    public boolean isExistingBusiness(Business newBusiness) {
+    	getBusinessId(newBusiness);
+    	
+    	if (newBusiness.getBusinessId() != 0){
+    		
+    		return true;
+    	}
+    	
+    	else {
+    		return false;
+    	}
+    	
+    }
+    
  
 
 // methods called in saveNewBusiness: saving each part first and get IDs second (since they are called in the save methods).    
     private void saveNewAddress(Business newBusiness) {
     	Address newAddress = newBusiness.getAddress();
-    	String sqlAdd = "Insert Into address (address_id, business_id, street1,  street2, street3, state, zip_code) " +
-    			"Values (default, ?, ?, ?, ?, ?, ?);";
+    	String sqlAdd = "Insert Into address (address_id, business_id, street1,  street2, street3, city, state, zip_code) " +
+    			"Values (default, ?, ?, ?, ?, ?, ?, ?);";
     	jdbcTemplate.update(sqlAdd, newBusiness.getBusinessId(), newAddress.getStreet1(), newAddress.getStreet2(), 
-    			newAddress.getStreet3(), newAddress.getState(), newAddress.getZipCode()); 
+    			newAddress.getStreet3(), newAddress.getCity(), newAddress.getState(), newAddress.getZipCode()); 
     	getAddressId(newBusiness, newAddress);
     }
     
@@ -142,7 +174,7 @@ public class JDBCBusinessDAO implements BusinessDAO {
     }
     
     private void saveBusType(Business newBusiness) {
-    	String sqlBTy = "Instert Into business_type (business_id, type_id) Values (?, ?);";
+    	String sqlBTy = "Insert Into business_type (business_id, type_id) Values (?, ?);";
     	jdbcTemplate.update(sqlBTy, newBusiness.getBusinessId(), newBusiness.getType().getTypeId());
     }
 	
@@ -238,6 +270,7 @@ public class JDBCBusinessDAO implements BusinessDAO {
 		a.setStreet1(result.getString("street1"));
 		a.setStreet2(result.getString("street2"));
 		a.setStreet3(result.getString("street3"));	
+		a.setCity(result.getString("city"));
 		a.setState(result.getString("state"));
 		a.setZipCode(result.getInt("zip_code"));
 		

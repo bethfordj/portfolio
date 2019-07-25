@@ -21,19 +21,19 @@ public abstract class DAOIntegrationTest {
 		dataSource.setPassword("postgres1");
 
 		/* Turn Off AutoCommit */
-		dataSource.setAutoCommit(false);
+		dataSource.setAutoCommit(true);
 	}
 
 	@AfterClass
 	public static void closeDataSource() throws SQLException {
 		dataSource.destroy();
 	}
-
-	/* Rollback */
-	@After
-	public void rollback() throws SQLException {
-		dataSource.getConnection().rollback();
-	}
+//
+//	/* Rollback */
+//	@After
+//	public void rollback() throws SQLException {
+//		dataSource.getConnection().rollback();
+//	}
 
 	/* Offer Access to the DB */
 	public DataSource getDataSource() {
