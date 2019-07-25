@@ -15,13 +15,17 @@
 
 
 
-
-
-
 	</form:form>
+	
+	<c:forEach var="business" items="${businessList}" >
+		<div class="tile">
+			<h3>${business.businessName}</h3>
+			<c:if test="${business.slogan} != null">
+				<p id="slogan">${business.slogan}</p>
+			</c:if>
+			
 
-
-
+	</c:forEach>
 </div>
 
 
