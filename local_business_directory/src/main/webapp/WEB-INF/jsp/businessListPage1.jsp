@@ -19,13 +19,20 @@
 	
 	<c:forEach var="business" items="${businessList}" >
 		<div class="tile">
+		<c:set var="address" value="${business.address}" />
 			<h3>${business.businessName}</h3>
 			<c:if test="${business.slogan} != null">
 				<p id="slogan">${business.slogan}</p>
 			</c:if>
-			
+			<div>
+				<h4>Address:</h4>
+				<p>${address.street1}</p>
+				<p>${address.city}, OH, ${address.zipCode}</p>
+			</div>
+		</div>
 
 	</c:forEach>
+	
 </div>
 
 

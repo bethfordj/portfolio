@@ -104,9 +104,6 @@ public class JDBCBusinessDAO implements BusinessDAO {
     	else {
     		result = jdbcTemplate.queryForRowSet(sql);
     	}
-        
-        System.out.println(sql);
-        System.out.println(allQueryParameters);
 
         List<Business> searchResults = new ArrayList<Business>();
         

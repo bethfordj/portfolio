@@ -84,12 +84,32 @@ h2 {
 	font-weight: bold;
 }
 
+h3 {
+	font-family: "Give You Glory", serif;
+	font-weight: bold;
+	font-size: 1.5em;
+}
+	
+h4 {
+	font-family: "Poiret One", san-serif;
+	font-weight: bold;
+	font-size: 1.2em;
+}
+
+.tile p {
+	font-family: "Poiret One", san-serif;
+	font-weight: medium;
+}
+
 .tile {
-	background-color: #f7f7f7;
+	background-color: white;
 	border-radius: 5px;
 	box-shadow: 1px 1px lightgray;
-	margin: 5px 0px 5px 0px;
+	margin: 5px 10px 5px 0px;
 	padding: 5px 15px 5px 15px;
+	border-color: #e9f5f1;
+	border-width: 1px;
+	border-style: solid;
 }
 
 footer {
