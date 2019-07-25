@@ -1,0 +1,8 @@
+# Local Business Directory
+
+Local Business Directory is a Java webapp to display, sort, search, and add local businesses based on a database.
+
+## Installation
+
+The application is being created in Eclipse with Spring MVC and a corresponding database of local businesses. The directory
+is still in process, but it can be run through Eclipse with its "Run on Server" settings. 
