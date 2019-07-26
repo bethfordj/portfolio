@@ -115,7 +115,24 @@ public class JDBCBusinessDAOIntegrationTest extends DAOIntegrationTest {
 		
 		Assert.assertEquals("testBusiness", firstBusiness.getBusinessName());	
 		Assert.assertEquals(2, listLength);	
+	}
+	
+	@Test
+	public void get_all_businesses_filter_by_name_sort_by_rating_high_to_low() {
+		deleteAllTableData();
 		
+		BusinessSortOrder busSortOrder = BusinessSortOrder.valueOfLabel("GeneralType");
+		BusinessFilter busFilter = new BusinessFilter();
+		busFilter.setBusinessName("testBus");
+		
+		dao.saveNewBusiness(makeTestBusiness1());
+		dao.saveNewBusiness(makeTestBusiness2());
+		List<Business> busList = dao.getAll(busFilter, busSortOrder);
+		int listLength = busList.size();
+		Business firstBusiness = busList.get(0);
+		
+		Assert.assertEquals("testBusiness", firstBusiness.getBusinessName());	
+		Assert.assertEquals(1, listLength);	
 	}
 	
 	@Test

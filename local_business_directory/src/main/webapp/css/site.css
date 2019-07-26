@@ -4,7 +4,7 @@ body {
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: 100%;
-  font-family: "Poiret One", san serif;
+  font-family: "Antic", san serif;
 }
 
 nav {
@@ -24,17 +24,19 @@ li {
 }
 
 #diamond {
-	font-size: 60%;
+	font-size: 50%;
 }
 
 a:link {
   	color: #c3d9d3;
   	text-decoration: none;
+ 	font-weight: medium;
 }
 
 a:visited {
   color: #d9c1b2;
   text-decoration: none;
+  font-weight: medium;
 }
 
 a:hover {
@@ -62,10 +64,51 @@ a:hover {
 
 #site-blurb {
 	grid-area: blurb;
-	font-family: "Poiret One", san serif;
+	font-family: "Give You Glory", serif;
 	font-style: italic;
 	padding: 2%;
 	margin-top: 10%;
+}
+
+form,
+label,
+select {
+  font-family: "Antic", san serif;
+  font-size: .8rem;
+}
+
+input,
+select,
+option {
+	margin: 5px;
+	height: 50%;
+	border-radius: 5px;
+	padding: 5px;
+}
+
+label {
+	font-weight: bold;
+}
+
+form {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	height: 30px;
+}
+
+#main-submit-button:hover {
+	height: 25px;
+	border-radius: 5px;
+	color: #f0f0f0;
+	background-color: #003434;
+}
+
+#main-submit-button {
+	height: 25px;
+	border-radius: 5px;
+	color: black;
+	background-color: white;
 }
 
 .directory {
@@ -90,14 +133,13 @@ h2 {
 }
 
 h3 {
-	font-family: "Give You Glory", serif;
 	font-weight: bold;
 	font-size: 1.5em;
 }
 	
 #subtitle {
 	display: inline block;
-	font-family: "Poiret One", san-serif;
+	font-family: "Antic", san-serif;
 	font-weight: bold;
 	font-size: 1.1em;
 	margin-left: 0px;
@@ -105,7 +147,7 @@ h3 {
 
 .tile p {
 	display: inline block;
-	font-family: "Poiret One", san-serif;
+	font-family: "Antic", san-serif;
 	font-weight: medium;
 	margin-left: 10px;
 }

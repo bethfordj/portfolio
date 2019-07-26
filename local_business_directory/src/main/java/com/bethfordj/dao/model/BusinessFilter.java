@@ -1,5 +1,8 @@
 package com.bethfordj.dao.model;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class BusinessFilter {
 	
 	private String cityName;
