@@ -1,0 +1,7 @@
+{
+    "devDependencies": {
+        "@vue/cli-plugin-babel": "^3.7.0",
+        "sass-loader": "*",
+        "node-sass": "*"
+    }
+}
