@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar-dark">
+  <nav class="navbar-red">
     <slot></slot>
   </nav>
 </template>
@@ -12,7 +12,7 @@ export default {
 </script>
 
 <style lang="scss">
-nav {
+.navbar-red {
   @include navbarLinks;
   background-color: $color-red;
   max-height: 5%;

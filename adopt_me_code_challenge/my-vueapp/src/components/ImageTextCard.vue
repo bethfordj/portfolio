@@ -6,9 +6,7 @@
       </slot>
   </blue-nav-bar>
   <full-width-image>
-      <slot name="image">
-          <image>Add an image tag with source here.</image>
-          </slot>
+          <image><img :src="imageSrc"/></image>
           </full-width-image>
               <slot name="description">
                   <description>Placeholder description</description>
@@ -24,6 +22,9 @@ import BlueNavBar from "@/components/BlueNavBar";
 import FullWidthImage from "@/components/FullWidthImage";
 
 export default {
+    props: {
+        imageSrc: String
+    },
   components: {
     BlueNavBar,
     FullWidthImage

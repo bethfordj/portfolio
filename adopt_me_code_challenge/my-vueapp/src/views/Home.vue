@@ -6,8 +6,7 @@
     <cards-display>
       <image-text-card>
         <title>VOLUNTEERS</title>
-        <image>
-        <img src="@/assets/img/girl.png">
+        <image v-bind:imageSrc="imgSrc">
         </image>
         <description>Amazing people, doing the difference every single day. Join us now and be part of a community that is changing the world.</description>
       </image-text-card>
@@ -22,10 +21,15 @@ import ImageTextCard from "@/components/ImageTextCard";
 
 export default {
   name: "home",
+  data() {
+    return {
+    imgSrc: "@/assets/img/girl.png"
+    }
+  },
   components: {
     FullWidthImage,
     CardsDisplay,
-    ImgTextCard
+    ImageTextCard
   }
 };
 </script>

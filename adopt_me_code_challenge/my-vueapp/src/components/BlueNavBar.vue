@@ -1,7 +1,7 @@
 <template>
-  <navbar class="navbar-dark">
+  <nav class="navbar-blue">
     <slot></slot>
-  </navbar>
+  </nav>
 </template>
     
 
@@ -12,8 +12,8 @@ export default {
 </script>
 
 <style lang="scss">
-.navbar-dark {
+.navbar-blue {
   @include navbarLinks;
-  background-color: $color-red;
+  background-color: $color-blue;
 }
 </style>
