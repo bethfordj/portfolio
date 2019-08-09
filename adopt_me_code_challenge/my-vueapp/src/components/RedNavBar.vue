@@ -15,6 +15,6 @@ export default {
 .navbar-red {
   @include navbarLinks;
   background-color: $color-red;
-  max-height: 5%;
+  color: $nav-text-color;
 }
 </style>

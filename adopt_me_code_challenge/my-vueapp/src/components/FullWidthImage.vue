@@ -14,10 +14,6 @@ export default {
 .full-width-media {
   overflow: hidden;
   margin: 0;
-}
-
-.full-width-media img {
-  max-width: 100%;
-  max-height: 25%;
+  max-height: 33rem;
 }
 </style>

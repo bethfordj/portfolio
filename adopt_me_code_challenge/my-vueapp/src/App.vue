@@ -1,5 +1,9 @@
 <template>
   <div id="app">
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Open+Sans:400,700"
+      rel="stylesheet"
+    >
     <top-nav-bar></top-nav-bar>
 
     <router-view/>
@@ -8,6 +12,7 @@
 
 <script>
 import TopNavBar from "@/components/TopNavBar.vue";
+import BlueNavBar from "@/components/BlueNavBar.vue";
 
 export default {
   components: {
@@ -17,29 +22,21 @@ export default {
 </script>
 
 <style lang="scss">
-@font-face {
-  font-family: "Open Sans";
-  src: url("https://fonts.googleapis.com/css?family=Open+Sans");
-}
+@include h1Font;
+@include h2Font;
 
-@font-face {
-  font-family: "Open Sans Condensed";
-  src: url("https://fonts.googleapis.com/css?family=Open+Sans+Condensed");
-}
-
-h1 {
-  font-size: $font-size-h1;
-  font-family: $font-family-h1;
-  font-weight: $font-weight-h1;
-}
-
-h2 {
-  font-size: $font-size-h2;
-  font-family: $font-family-h2;
-  font-weight: $font-weight-h2;
+body,
+div {
+  font-family: $font-family-primary;
+  margin: 0px;
 }
 
 #app {
   font-family: $font-family-primary;
+}
+
+.nav-logo {
+  max-height: 50px;
+  max-width: 50px;
 }
 </style>

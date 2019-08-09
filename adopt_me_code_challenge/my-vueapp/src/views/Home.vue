@@ -1,35 +1,118 @@
 <template>
   <div class="home">
     <full-width-image>
-      <img src="@/assets/img/dogs.jpg">
+      <img id="top-image" src="@/assets/img/dogs.jpg">
     </full-width-image>
-    <cards-display>
-      <image-text-card>
-        <title>VOLUNTEERS</title>
-        <image v-bind:imageSrc="imgSrc">
-        </image>
-        <description>Amazing people, doing the difference every single day. Join us now and be part of a community that is changing the world.</description>
-      </image-text-card>
-    </cards-display>
+    <two-card-display>
+      <div class="image-text-card">
+        <blue-nav-bar class="card-navbar">
+          <h3>VOLUNTEERS</h3>
+        </blue-nav-bar>
+        <full-width-image>
+          <img id="card-image" src="@/assets/img/girl.png">
+        </full-width-image>
+        <div>
+          <p
+            class="card-text"
+          >Amazing people, doing the difference every single day. Join us now and be part of a community that is changing the world.</p>
+          <div id="blue-card-button">
+            <b-button variant="outline" v-on:click="goToJoinUs">JOIN US</b-button>
+          </div>
+        </div>
+      </div>
+      <div class="video-card">
+        <red-nav-bar class="card-navbar">
+          <h3>TESTIMONIAL OF THE MONTH</h3>
+        </red-nav-bar>
+        <full-width-image class="testimonial-image">
+          <img src="@/assets/img/testimonial.jpg">
+        </full-width-image>
+      </div>
+    </two-card-display>
+    <blue-nav-bar>
+      <footer-information/>
+    </blue-nav-bar>
   </div>
 </template>
 
 <script>
 import FullWidthImage from "@/components/FullWidthImage.vue";
-import CardsDisplay from "@/components/CardsDisplay.vue";
-import ImageTextCard from "@/components/ImageTextCard";
+import TwoCardDisplay from "@/components/TwoCardDisplay.vue";
+import BlueNavBar from "@/components/BlueNavBar.vue";
+import RedNavBar from "@/components/RedNavBar.vue";
+import FooterInformation from "@/components/FooterInformation.vue";
 
 export default {
   name: "home",
-  data() {
-    return {
-    imgSrc: "@/assets/img/girl.png"
-    }
-  },
   components: {
     FullWidthImage,
-    CardsDisplay,
-    ImageTextCard
+    TwoCardDisplay,
+    BlueNavBar,
+    RedNavBar,
+    FooterInformation
+  },
+  methods: {
+    goToJoinUs() {
+      this.$router.push("/join-us");
+    }
   }
 };
 </script>
+
+<style lang="scss">
+.card-navbar {
+  padding: 0.5rem 0rem 0.5rem 1rem;
+  font-family: $font-family-primary;
+}
+
+.card-text {
+  padding: 5%;
+  width: 90%;
+  margin: 0px;
+}
+
+.image-text-card {
+  width: 35%;
+  box-shadow: -2px 10px 18px -4px rgba(0, 0, 0, 0.75);
+  height: fit-content;
+}
+
+.video-card {
+  width: 60%;
+}
+
+.video-card img {
+  width: 100%;
+  object-position: 0rem -6rem;
+  overflow: hidden;
+}
+
+#blue-card-button {
+  padding: 5px;
+  border-radius: 0px;
+  background: white;
+  border: 2px solid $color-blue;
+  color: $color-blue;
+  font-size: 1rem;
+  margin: 0rem 0rem 1.5rem 1.5rem;
+  width: fit-content;
+  height: fit-content;
+  font-weight: 700px;
+  font-family: $font-family-secondary;
+}
+
+#blue-card-button:hover {
+  background: $color-blue;
+  color: white;
+}
+
+#card-image {
+  width: 100%;
+}
+
+#top-image {
+  max-width: 105%;
+  object-fit: cover;
+  object-position: -2rem -10rem;
+}
+</style>

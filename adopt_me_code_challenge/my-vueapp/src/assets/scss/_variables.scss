@@ -33,12 +33,25 @@ $font-weight-h2: bold;
     li:hover {
         text-decoration: underline;
     }
-    .nav-item {
-        font-weight: 700px;
-      }
       nav {
-          display: block;
-          margin: 0;
+          margin: 0px;
       }
 
 }
+
+@mixin h1Font {
+    h1 {
+        font-size: $font-size-h1;
+        font-family: $font-family-h1;
+        font-weight: $font-weight-h1;
+        }
+}
+
+@mixin h2Font {
+    h2 {
+        font-size: $font-size-h2;
+        font-family: $font-family-h2;
+        font-weight: $font-weight-h2;
+    }
+}
+

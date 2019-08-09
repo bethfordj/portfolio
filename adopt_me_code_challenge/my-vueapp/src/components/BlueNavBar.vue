@@ -15,5 +15,6 @@ export default {
 .navbar-blue {
   @include navbarLinks;
   background-color: $color-blue;
+  color: $nav-text-color;
 }
 </style>

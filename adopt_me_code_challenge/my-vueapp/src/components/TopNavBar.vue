@@ -1,16 +1,22 @@
 <template>
-  <red-nav-bar>
-    <ul class="list-inline">
+  <red-nav-bar class="top-navbar">
+    <ul>
       <li class="navbar-brand">
-        <router-link v-bind:to="{ name: 'home' }" tag="li" exact>Adoptme.Org</router-link>
+        <router-link id="logo-url" v-bind:to="{ name: 'home' }" tag="li" exact>
+          <p id="adopt-me">
+            <img class="nav-logo" src="@/assets/img/logo.png">Adoptme.Org
+          </p>
+        </router-link>
       </li>
-      <li class="nav-item">
-        <router-link v-bind:to="{ name: 'whatWeDo' }" tag="li">WHAT we do</router-link>
+      <li class="three-top-nav-links">
+        <router-link v-bind:to="{ name: 'whatWeDo' }" tag="li">
+          <p>WHAT we do</p>
+        </router-link>
       </li>
-      <li class="nav-item">
+      <li class="three-top-nav-links">
         <router-link v-bind:to="{ name: 'whoWeAre' }" tag="li">WHO we are</router-link>
       </li>
-      <li class="nav-item">
+      <li class="three-top-nav-links">
         <router-link v-bind:to="{ name: 'eventsAdoption' }" tag="li">EVENTS adoption</router-link>
       </li>
     </ul>
@@ -32,15 +38,32 @@ export default {
 
 
 <style  lang="scss">
-.red-nav-bar {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: nowrap;
-  margin: 0px;
+li {
+  display: inline-flex;
+  align-content: center;
+  justify-content: space-around;
+  font-size: 1.5rem;
 }
 
-.navbar-brand {
-  font-size: 1.5rem;
-  font-weight: light;
+.three-top-nav-links {
+  padding-right: 1rem;
+  padding-left: 1rem;
+  font-weight: bold;
+}
+
+.top-navbar {
+  height: fit-content;
+  font-family: $font-family-secondary;
+}
+
+#adopt-me {
+  padding-left: 0.5rem;
+  font-weight: normal;
+}
+
+#logo-url {
+  font-size: 2rem;
+  padding-right: 30rem;
 }
 </style>
+
