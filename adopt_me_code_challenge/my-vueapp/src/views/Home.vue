@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <div>
+    <div class="image-and-overlay">
       <full-width-image>
         <img id="top-image" src="@/assets/img/dogs.jpg">
       </full-width-image>
@@ -77,17 +77,15 @@ export default {
 </script>
 
 <style lang="scss">
-.card-navbar {
-  padding: 0.5rem 0rem 0.5rem 1rem;
-  font-family: $font-family-primary;
-}
 .card-text {
   padding: 5%;
   width: 90%;
   margin: 0px;
 }
+.image-and-overlay {
+  width: 100%;
+}
 .image-text-card {
-  width: 35%;
   box-shadow: -2px 10px 18px -4px rgba(0, 0, 0, 0.75);
   height: fit-content;
 }
@@ -96,15 +94,10 @@ export default {
 }
 .relative-div {
   position: absolute;
-  top: 80%;
 }
 
-.video-card {
-  width: 60%;
-}
 .video-card img {
   width: 100%;
-  object-position: 0rem -6rem;
   overflow: hidden;
 }
 #blue-card-button {
@@ -137,12 +130,11 @@ export default {
 }
 #top-image {
   position: absolute;
-  max-width: 105%;
   object-fit: cover;
-  object-position: 0rem -10rem;
   z-index: -1;
 }
 #transparent-overlay {
+  object-fit: cover;
   position: absolute;
   background-color: $color-transparent-div;
   width: 100%;
@@ -150,6 +142,85 @@ export default {
   color: $color-red;
   padding: 5%;
   overflow: hidden;
-  top: 45%;
+}
+@media only screen and (min-device-width: 320px) {
+  .card-navbar {
+    padding: 1px 0px 1px 15px;
+    font-family: $font-family-primary;
+    font-size: 14px;
+  }
+  h1 {
+    font-size: 16px;
+  }
+  .image-text-card {
+    width: 75%;
+    margin: 4%;
+  }
+  .relative-div {
+    top: 112%;
+  }
+  .video-card {
+    width: 75%;
+    margin: 4%;
+  }
+  .video-card img {
+    object-position: 0rem -2rem;
+  }
+  #red-button {
+    font-size: 12px;
+  }
+  #top-image {
+    object-position: -1rem -2rem;
+    max-width: 100%;
+  }
+  #transparent-overlay {
+    top: 91%;
+    height: 60px;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .card-navbar {
+    padding: 5px 0px 5px 5px;
+    font-family: $font-family-primary;
+  }
+  .image-text-card {
+    width: 35%;
+    font-size: 12px;
+  }
+  .video-card {
+    width: 60%;
+  }
+  .video-card img {
+    object-position: 0rem -4rem;
+  }
+  #top-image {
+    max-width: 100%;
+    object-position: -2rem -7rem;
+  }
+  #transparent-overlay {
+    top: 83%;
+  }
+}
+@media only screen and (min-width: 1224px) {
+  .card-navbar {
+    padding: 0.5rem 0rem 0.5rem 1rem;
+    font-family: $font-family-primary;
+  }
+  .image-text-card {
+    width: 35%;
+  }
+  .video-card {
+    width: 60%;
+  }
+  .video-card img {
+    object-position: 0rem -6rem;
+  }
+  #top-image {
+    max-width: 105%;
+    object-position: 0rem -10rem;
+  }
+  #transparent-overlay {
+    top: 45%;
+  }
 }
 </style>

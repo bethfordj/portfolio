@@ -43,10 +43,7 @@ h1 {
   font-weight: $font-weight-h1;
 }
 .footer {
-  display: grid;
-  grid-template-columns: 5fr 6fr;
-  grid-template-areas: "leftColumn threeLinks";
-  padding: 5%;
+  @include navbarGrid;
 }
 
 .footer,

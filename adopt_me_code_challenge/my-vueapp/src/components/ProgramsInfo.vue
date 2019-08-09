@@ -1,6 +1,22 @@
 <template>
-  <div>
+  <div class="selectable-links">
     <single-row-of-list>
+      <div>
+        <h3
+          class="not-selected"
+          id="programs"
+          v-on:click="programIsSelected=true"
+          :class="{selected : programIsSelected}"
+        >PROGRAMS</h3>
+        <h3
+          class="not-selected"
+          id="companies"
+          v-on:click="programIsSelected=false"
+          :class="{selected : !programIsSelected}"
+        >ASSOCIATED COMPANIES</h3>
+      </div>
+    </single-row-of-list>
+    <single-row-of-list v-if="programIsSelected">
       <div class="list-image">
         <img class="list-image" src="@/assets/img/friend-in-trouble.png">
       </div>
@@ -13,7 +29,7 @@
       </div>
       <img class="outside-list-image" src="@/assets/img/adoption.jpg">
     </single-row-of-list>
-    <single-row-of-list>
+    <single-row-of-list v-if="programIsSelected">
       <div class="list-image">
         <img class="list-image" src="@/assets/img/two-dogs.jpg">
       </div>
@@ -36,6 +52,11 @@ export default {
   components: {
     SingleRowOfList
   },
+  data() {
+    return {
+      programIsSelected: true
+    };
+  },
   methods: {
     behaviorProgram() {
       this.$router.push("/what-we-do");
@@ -46,30 +67,32 @@ export default {
   }
 };
 </script>
-<style scoped>
+<style scoped lang="scss">
 div {
   display: inline-block;
+}
+h4 {
+  color: $color-red;
 }
 </style>
 
 <style lang="scss">
-.list-image {
-  width: 150px;
-  height: 150px;
-}
-
 .list-image img {
   object-fit: cover;
   object-position: center;
   overflow: hidden;
 }
-.list-text {
-  width: 60%;
-  margin-left: 2%;
+.not-selected {
+  color: $color-gray;
 }
-.outside-list-image {
-  width: 20%;
-  float: right;
+.selected {
+  color: $color-blue;
+}
+#companies:hover {
+  text-decoration: underline;
+}
+#programs:hover {
+  text-decoration: underline;
 }
 #red-button {
   display: block;
@@ -78,6 +101,68 @@ div {
 
 #red-button:hover {
   @include redButtonHover;
+}
+
+@media only screen and (min-device-width: 320px) {
+  h3 {
+    font-size: 14px;
+    margin-left: 15px;
+  }
+  .list-image {
+    width: 150px;
+    height: 150px;
+  }
+  .list-text {
+    width: 60%;
+    margin-left: 2%;
+  }
+  .list-image,
+  .list-text {
+    display: block;
+    margin-left: 15px;
+    width: 75%;
+  }
+  .outside-list-image {
+    width: 0%;
+  }
+}
+@media only screen and (min-width: 768px) {
+  h3 {
+    font-size: 18px;
+    margin-left: 5%;
+
+    margin-left: 25px;
+  }
+  .list-image {
+    width: 140px;
+    height: 140px;
+  }
+  .list-text {
+    width: 45%;
+    margin-left: 5%;
+  }
+  .selectable-links {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+  }
+  .outside-list-image {
+    width: 0%;
+  }
+}
+@media only screen and (min-width: 1224px) {
+  .list-image {
+    width: 150px;
+    height: 150px;
+  }
+  .list-text {
+    width: 60%;
+    margin-left: 2%;
+  }
+  .outside-list-image {
+    width: 20%;
+    float: right;
+  }
 }
 </style>
 

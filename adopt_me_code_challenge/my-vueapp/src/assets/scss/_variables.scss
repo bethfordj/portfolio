@@ -71,3 +71,10 @@ $font-weight-h2: bold;
     color: white;
 }
 
+@mixin navbarGrid {
+    display: grid;
+    grid-template-columns: 5fr 6fr;
+    grid-template-areas: "leftColumn threeLinks";
+    padding: 5%;
+}
+
