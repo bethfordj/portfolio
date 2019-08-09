@@ -1,7 +1,7 @@
 <template>
   <red-nav-bar class="top-navbar">
     <ul>
-      <li class="lef-column">
+      <li class="left-column">
         <router-link id="logo-url" v-bind:to="{ name: 'home' }" tag="li" exact>
           <p id="adopt-me">
             <img class="nav-logo" src="@/assets/img/logo.png">Adoptme.Org
@@ -36,17 +36,29 @@ export default {
 
 
 <style  lang="scss">
+.left-column {
+  grid-area: leftColumn;
+  display: inline-block;
+}
 .three-top-nav-links {
   font-weight: bold;
   display: inline-flex;
   align-content: center;
   justify-content: space-around;
   font-size: 1.5rem;
+  padding-right: 1rem;
+  padding-left: 1rem;
+  grid-area: threeLinks;
 }
 
 .top-navbar {
-  height: fit-content;
+  position: absolute;
+  top: 0px;
+  max-height: 300px;
   font-family: $font-family-secondary;
+  width: 100%;
+  @include navbarGrid;
+  z-index: 501;
 }
 
 #adopt-me {
@@ -58,40 +70,38 @@ export default {
 }
 
 @media only screen and (min-device-width: 320px) {
-  .left-column {
-    grid-area: leftColumn;
-    display: inline-block;
+  #adopt-me {
+    padding-left: 10px;
   }
-  .three-top-nav-links {
-    padding-right: 1rem;
-    padding-left: 1rem;
-    grid-area: threeLinks;
-    flex-wrap: nowrap;
-  }
+}
 
-  .top-navbar {
-    @include navbarGrid;
+@media only screen and (min-width: 600px) {
+  li {
+    display: inline-block;
+    white-space: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+  ul {
+    display: inline-block;
+    white-space: nowrap;
+    vertical-align: top;
   }
   #adopt-me {
-    padding-left: 10px;
+    padding-left: 15px;
   }
-}
-@media only screen and (min-width: 768px) {
-  .three-top-nav-links {
-    padding-right: 1rem;
-    padding-left: 2rem;
-  }
-  #adopt-me {
-    padding-left: 10px;
-  }
-}
-@media only screen and (min-width: 1224px) {
-  #adopt-me {
-    padding-left: 0.5rem;
+  .left-column {
+    width: 100%;
+    vertical-align: top;
   }
   .three-top-nav-links {
     padding-right: 2rem;
     padding-left: 4rem;
+    vertical-align: top;
+  }
+  .top-navbar {
+    max-height: 60px;
+    vertical-align: top;
   }
 }
 </style>

@@ -1,13 +1,15 @@
 <template>
   <div class="home">
-    <div class="image-and-overlay">
-      <full-width-image>
-        <img id="top-image" src="@/assets/img/dogs.jpg">
-      </full-width-image>
-      <div id="transparent-overlay">
-        <h1>This is your new family!</h1>
-        <div id="red-button">
-          <b-button variant="outline" v-on:click="adoptNow">ADOPT NOW</b-button>
+    <div class="home-grid">
+      <div class="image-and-overlay">
+        <full-width-image>
+          <img id="top-image" src="@/assets/img/dogs.jpg">
+        </full-width-image>
+        <div id="transparent-overlay">
+          <h1>This is your new family!</h1>
+          <div id="red-button">
+            <b-button variant="outline" v-on:click="adoptNow">ADOPT NOW</b-button>
+          </div>
         </div>
       </div>
     </div>
@@ -82,15 +84,26 @@ export default {
   width: 90%;
   margin: 0px;
 }
+.home-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-areas: "featureImage";
+}
+.home-footer {
+  grid-area: homeFooter;
+  width: 110%;
+  position: absolute;
+  bottom: 0px;
+}
 .image-and-overlay {
-  width: 100%;
+  grid-area: featureImage;
 }
 .image-text-card {
   box-shadow: -2px 10px 18px -4px rgba(0, 0, 0, 0.75);
   height: fit-content;
 }
 .list {
-  margin-bottom: 5%;
+  margin-bottom: 35%;
 }
 .relative-div {
   position: absolute;
@@ -129,9 +142,9 @@ export default {
   @include redButtonHover;
 }
 #top-image {
-  position: absolute;
   object-fit: cover;
-  z-index: -1;
+  position: absolute;
+  width: 110%;
 }
 #transparent-overlay {
   object-fit: cover;
@@ -142,6 +155,7 @@ export default {
   color: $color-red;
   padding: 5%;
   overflow: hidden;
+  z-index: 500;
 }
 @media only screen and (min-device-width: 320px) {
   .card-navbar {
@@ -150,18 +164,16 @@ export default {
     font-size: 14px;
   }
   h1 {
-    font-size: 16px;
+    font-size: 20px;
   }
-  .image-text-card {
-    width: 75%;
-    margin: 4%;
+  .image-text-card,
+  .video-card {
+    width: 80%;
+    margin: 5% 7% 5% 7%;
   }
   .relative-div {
-    top: 112%;
-  }
-  .video-card {
-    width: 75%;
-    margin: 4%;
+    top: 82%;
+    margin: auto;
   }
   .video-card img {
     object-position: 0rem -2rem;
@@ -170,42 +182,48 @@ export default {
     font-size: 12px;
   }
   #top-image {
-    object-position: -1rem -2rem;
-    max-width: 100%;
+    top: 46%;
   }
   #transparent-overlay {
-    top: 91%;
+    top: 66.5%;
     height: 60px;
   }
 }
-@media only screen and (min-width: 768px) {
-  .card-navbar {
-    padding: 5px 0px 5px 5px;
-    font-family: $font-family-primary;
-  }
-  .image-text-card {
-    width: 35%;
-    font-size: 12px;
-  }
-  .video-card {
-    width: 60%;
-  }
-  .video-card img {
-    object-position: 0rem -4rem;
+@media only screen and (min-width: 400px) {
+  .relative-div {
+    top: 90%;
   }
   #top-image {
-    max-width: 100%;
-    object-position: -2rem -7rem;
+    top: 42%;
   }
   #transparent-overlay {
-    top: 83%;
+    top: 70%;
   }
 }
-@media only screen and (min-width: 1224px) {
+@media only screen and (min-width: 500px) {
+  .relative-div {
+    top: 98%;
+  }
+  #top-image {
+    top: 42%;
+  }
+  #transparent-overlay {
+    top: 80%;
+  }
+}
+@media only screen and (min-width: 650px) {
+  p {
+    display: inline-block;
+  }
   .card-navbar {
     padding: 0.5rem 0rem 0.5rem 1rem;
     font-family: $font-family-primary;
   }
+
+  .relative-div {
+    top: 82%;
+  }
+
   .image-text-card {
     width: 35%;
   }
@@ -216,11 +234,69 @@ export default {
     object-position: 0rem -6rem;
   }
   #top-image {
-    max-width: 105%;
-    object-position: 0rem -10rem;
+    top: 24%;
   }
   #transparent-overlay {
-    top: 45%;
+    top: 60%;
+  }
+}
+
+@media only screen and (min-width: 750px) {
+  p {
+    display: inline-block;
+  }
+  .card-navbar {
+    padding: 0.5rem 0rem 0.5rem 1rem;
+    font-family: $font-family-primary;
+  }
+
+  .relative-div {
+    top: 100%;
+  }
+
+  .image-text-card {
+    width: 35%;
+  }
+  .video-card {
+    width: 60%;
+  }
+  .video-card img {
+    object-position: 0rem -6rem;
+  }
+  #top-image {
+    top: 14%;
+  }
+  #transparent-overlay {
+    top: 80%;
+  }
+}
+@media only screen and (min-width: 750px) {
+  p {
+    display: inline-block;
+  }
+  .card-navbar {
+    padding: 0.5rem 0rem 0.5rem 1rem;
+    font-family: $font-family-primary;
+  }
+
+  .relative-div {
+    top: 130%;
+  }
+
+  .image-text-card {
+    width: 60%;
+  }
+  .video-card {
+    width: 100%;
+  }
+  .video-card img {
+    object-position: 0rem -2rem;
+  }
+  #top-image {
+    top: 12%;
+  }
+  #transparent-overlay {
+    top: 108%;
   }
 }
 </style>

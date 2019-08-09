@@ -44,11 +44,13 @@ h1 {
 }
 .footer {
   @include navbarGrid;
+  margin-top: 1rem;
 }
 
 .footer,
 .left-column {
   font-family: $font-family-secondary;
+  width: 100%;
 }
 
 .left-column {

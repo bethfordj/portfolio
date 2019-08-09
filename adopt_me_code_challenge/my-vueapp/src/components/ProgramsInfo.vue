@@ -125,39 +125,25 @@ h4 {
   .outside-list-image {
     width: 0%;
   }
-}
-@media only screen and (min-width: 768px) {
-  h3 {
-    font-size: 18px;
-    margin-left: 5%;
-
-    margin-left: 25px;
-  }
-  .list-image {
-    width: 140px;
-    height: 140px;
-  }
-  .list-text {
-    width: 45%;
-    margin-left: 5%;
-  }
   .selectable-links {
-    width: 100%;
-    display: flex;
-    justify-content: space-around;
-  }
-  .outside-list-image {
-    width: 0%;
+    width: 95%;
+    margin: 5% 7% 5% 7%;
   }
 }
-@media only screen and (min-width: 1224px) {
+
+@media only screen and (min-width: 650px) {
+  h3 {
+    display: inline-block;
+    font-size: 20px;
+    padding-left: 10px;
+  }
   .list-image {
     width: 150px;
     height: 150px;
   }
   .list-text {
     width: 60%;
-    margin-left: 2%;
+    margin-left: 5%;
   }
   .outside-list-image {
     width: 20%;
