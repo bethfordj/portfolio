@@ -1,42 +1,36 @@
 <template>
-  <div id="app">
-    <link
-      href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Open+Sans:400,700"
-      rel="stylesheet"
-    >
-    <top-nav-bar></top-nav-bar>
+  <v-app>
+    <v-app-bar app>
+      <v-toolbar-title class="headline text-uppercase">
+        <span>Vuetify</span>
+        <span class="font-weight-light">MATERIAL DESIGN</span>
+      </v-toolbar-title>
+      <v-spacer></v-spacer>
+      <v-btn
+        text
+        href="https://github.com/vuetifyjs/vuetify/releases/latest"
+        target="_blank"
+      >
+        <span class="mr-2">Latest Release</span>
+      </v-btn>
+    </v-app-bar>
 
-    <router-view/>
-  </div>
+    <v-content>
+      <HelloWorld/>
+    </v-content>
+  </v-app>
 </template>
 
 <script>
-import TopNavBar from "@/components/TopNavBar.vue";
-import BlueNavBar from "@/components/BlueNavBar.vue";
+import HelloWorld from './components/HelloWorld';
 
 export default {
+  name: 'App',
   components: {
-    TopNavBar
-  }
+    HelloWorld,
+  },
+  data: () => ({
+    //
+  }),
 };
 </script>
-
-<style lang="scss">
-@include h1Font;
-@include h2Font;
-
-body,
-div {
-  font-family: $font-family-primary;
-  margin: 0px;
-}
-
-#app {
-  font-family: $font-family-primary;
-}
-
-.nav-logo {
-  max-height: 50px;
-  max-width: 50px;
-}
-</style>
