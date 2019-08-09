@@ -2,8 +2,8 @@ $color-red: #EF3E42;
 $color-blue: #332982;
 $color-gray: #777;
 
-$nav-text-color: white;
-
+$color-nav-text: white;
+$color-transparent-div:  rgba(39,39,39, 0.5);
 // Font families can be obtained from: 
 // https://fonts.google.com/?query=open&selection.family=Open+Sans+Condensed:300|Open+Sans:400,700
 // <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Open+Sans:400,700" rel="stylesheet">
@@ -26,7 +26,7 @@ $font-weight-h2: bold;
 
 @mixin navbarLinks {
     li {
-        color: $nav-text-color;
+        color: $color-nav-text;
         text-decoration: none;
         list-style-type: none;
     }
@@ -40,11 +40,9 @@ $font-weight-h2: bold;
 }
 
 @mixin h1Font {
-    h1 {
         font-size: $font-size-h1;
         font-family: $font-family-h1;
         font-weight: $font-weight-h1;
-        }
 }
 
 @mixin h2Font {
@@ -53,5 +51,23 @@ $font-weight-h2: bold;
         font-family: $font-family-h2;
         font-weight: $font-weight-h2;
     }
+}
+
+@mixin redButton {
+    padding: 5px;
+    border-radius: 0px;
+    border: 2px solid $color-red;
+    color: $color-red;
+    font-size: 1rem;
+    margin: 0rem 0rem 1.5rem 1.5rem;
+    width: fit-content;
+    height: fit-content;
+    font-weight: 700px;
+    font-family: $font-family-secondary;
+}
+
+@mixin redButtonHover {
+    background: $color-red;
+    color: white;
 }
 

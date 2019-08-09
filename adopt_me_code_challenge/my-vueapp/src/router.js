@@ -5,6 +5,7 @@ import WhatWeDo from '@/views/WhatWeDo';
 import WhoWeAre from '@/views/WhoWeAre';
 import EventsAdoption from '@/views/EventsAdoption';
 import JoinUs from '@/views/JoinUs';
+import AdoptNow from '@/views/AdoptNow';
 
 Vue.use(Router)
 
@@ -36,6 +37,11 @@ export default new Router({
       path: '/join-us',
       name: 'joinUs',
       component: JoinUs
+    },
+    {
+      path: '/adopt-now',
+      name: 'adoptNow',
+      component: AdoptNow
     }
   ]
 })

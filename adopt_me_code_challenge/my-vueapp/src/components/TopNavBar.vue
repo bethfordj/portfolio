@@ -46,8 +46,8 @@ li {
 }
 
 .three-top-nav-links {
-  padding-right: 1rem;
-  padding-left: 1rem;
+  padding-right: 2rem;
+  padding-left: 4rem;
   font-weight: bold;
 }
 
@@ -63,7 +63,7 @@ li {
 
 #logo-url {
   font-size: 2rem;
-  padding-right: 30rem;
+  padding-right: 25rem;
 }
 </style>
 
