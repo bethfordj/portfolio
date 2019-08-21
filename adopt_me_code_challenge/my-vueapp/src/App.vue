@@ -1,9 +1,5 @@
 <template>
   <div id="app">
-    <link
-      href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Open+Sans:400,700"
-      rel="stylesheet"
-    >
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <top-nav-bar></top-nav-bar>
 
