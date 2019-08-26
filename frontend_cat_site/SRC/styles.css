@@ -1,0 +1,277 @@
+/* General tag settings */
+body {
+  font-family: "Open Sans", sans-serif;
+  color: #969696;
+  font-weight: lighter;
+  width: 100%;
+  margin: 0px;
+  padding: 0px;
+}
+img,
+h1 {
+  margin: 0px;
+  padding: 0px;
+}
+h1,
+p {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 300;
+}
+h3 {
+  color: #555559;
+  font-weight: bold;
+}
+.main-content,
+.photo-and-description {
+  width: 100%;
+  margin: 0px;
+}
+/* HEADER & NAV BAR */
+header {
+  position: relative;
+  z-index: 500;
+  box-shadow: 1px -13px 11px 10px rgba(150, 150, 150, 0.7);
+  overflow: hidden;
+}
+.header-image-collage {
+  position: relative;
+}
+.image-row1,
+.image-row2 {
+  display: block;
+  position: relative;
+  margin: 0px;
+  padding: 0px;
+  z-index: -1;
+  left: -80px;
+}
+.transparent-layer {
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  z-index: 300;
+}
+nav {
+  background-color: #ffffff;
+  width: 100%;
+  padding: 20px 10px 20px 0px;
+  height: fit-content;
+  text-align: center;
+}
+#nav-link {
+  font-weight: 900;
+  color: #2e2e2e;
+  text-decoration: none;
+  padding: 15px;
+}
+#nav-link:hover {
+  color: #0089b3;
+  font-weight: bold;
+}
+#nav-link:visited {
+  color: #2c4a53;
+}
+
+/* SITE SLOGAN: general formatting for the section featuring the hot dog icon, slogan, and button */
+button {
+  background-color: #0089b3;
+  color: white;
+  border-radius: 5px;
+  padding: 15px;
+  font-size: 14px;
+  margin-top: 20px;
+}
+button:hover {
+  background-color: #0b556b;
+}
+.description h3 {
+  display: inline-block;
+  padding-left: 20px;
+  margin: 0px;
+}
+.description p {
+  padding-left: 50px;
+}
+.site-slogan,
+.site-slogan h1 {
+  background-color: #fbfafa;
+  text-align: center;
+}
+#horizontal-line {
+  display: inline-block;
+  height: 2px;
+  width: 30px;
+  vertical-align: middle;
+}
+#cat-outline {
+  filter: invert(64%) sepia(3%) saturate(45%) hue-rotate(350deg) brightness(92%)
+    contrast(93%);
+}
+#slogan {
+  font-weight: 100;
+  padding: 0px;
+  margin: 0px;
+}
+/* DESCRIPTION & PHOTO AREA */
+.photo-and-description {
+  display: flex;
+}
+/* FOOTER: Settings for all screen sizes */
+footer {
+  background-color: #efefef;
+}
+footer a {
+  color: #969696;
+  text-decoration: none;
+}
+
+/* PHONE SCREEN SETTINGS 320*/
+@media only screen and (min-device-width: 320px) {
+  /* Header Images & Nav*/
+  .header-image-collage {
+    display: none;
+  }
+  /* Site Slogan */
+  .site-slogan {
+    padding: 25px;
+  }
+  #cat-outline {
+    width: 45px;
+  }
+  #slogan {
+    font-size: 21pt;
+  }
+  /* Description & image settings */
+  p {
+    font-size: 12pt;
+  }
+  .description {
+    padding: 10px 15px 25px 15px;
+  }
+  .photo-and-description {
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+  }
+  #featured-images {
+    width: 80%;
+    padding: 0% 10% 0% 10%;
+    order: -1;
+  }
+  #horizontal-line {
+    background-color: white;
+  }
+  /* Footer */
+  footer {
+    padding: 10px;
+  }
+  footer p,
+  footer a {
+    font-size: 10px;
+    text-align: center;
+    margin: 5px 0px 0px 0px;
+  }
+}
+
+/* TABLET AND LAPTOP SCREEN SETTINGS 768+ */
+@media only screen and (min-device-width: 768px) {
+  /* Header Images & Nav */
+  .header-image-collage {
+    display: block;
+    overflow: hidden;
+    max-width: 1463px;
+  }
+  .image-row1,
+  .image-row2 {
+    height: 240px;
+    max-width: 1575px;
+    white-space: nowrap;
+  }
+  #header-images {
+    display: inline-block;
+    width: 240px;
+    height: 240px;
+  }
+  #nav-link {
+    padding: 35px;
+    font-size: 20px;
+  }
+  /* Site Slogan */
+  button {
+    margin-top: 50px;
+  }
+  .site-slogan {
+    padding: 40px 100px 40px 100px;
+  }
+  #cat-outline {
+    width: 85px;
+  }
+
+  #slogan {
+    font-size: 48pt;
+  }
+  /* Description & image settings */
+  h3 {
+    font-size: 21pt;
+  }
+  p {
+    font-size: 18pt;
+  }
+  .description {
+    padding: 30% 10% 30% 10%;
+    width: 80%;
+  }
+  .description div {
+    display: block;
+  }
+  .photo-and-description {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: space-between;
+  }
+  .left-description,
+  .right-description {
+    width: 50%;
+  }
+  #featured-images {
+    width: 50%;
+    padding: 0px;
+    order: 0;
+  }
+  #horizontal-line {
+    background-color: #0089b3;
+  }
+  #right-photo-description {
+    flex-direction: row-reverse;
+  }
+  /* Footer */
+  footer {
+    display: block;
+  }
+  footer p,
+  footer a {
+    display: inline-block;
+    font-size: 14pt;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  .contact-info {
+    display: inline-block;
+    padding-right: 0px;
+  }
+  .contact-info p {
+    border-right: 1px solid rgba(0, 0, 0, 0.4);
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+  .copyright {
+    padding-right: 25%;
+    padding-left: 10px;
+  }
+  #footer-contact-link p {
+    border-right: 0px;
+    padding-right: 5px;
+  }
+}
